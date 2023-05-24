@@ -11,4 +11,11 @@ class Permission extends Model
 
     protected $fillable = ['name'];
 
+    public function role() {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function hasRole($roleName): bool {
+        return $this->role()->where('name', $roleName)->exists();
+    }
 }
