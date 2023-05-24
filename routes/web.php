@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 
@@ -17,6 +18,7 @@ Route::middleware(['auth', 'role:admin'])
     Route::post('/roles/{role}/permissions', [RoleController::class, 'assignPermissions'])->name('roles.permissions');
     Route::resource('/roles', RoleController::class);
     Route::resource('/permissions', PermissionController::class);
+    Route::resource('/users', UserController::class);
 });
 
 
