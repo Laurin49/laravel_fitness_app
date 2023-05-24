@@ -3,12 +3,20 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::middleware(['auth', 'role:admin'])->group(function() {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::middleware(['auth', 'role:admin'])
+    ->name('admin.')
+    ->prefix('/admin')
+    ->group(function() {
+    Route::get('', [AdminController::class, 'index'])->name('index');
+    Route::post('/roles/{role}/permissions', [RoleController::class, 'assignPermissions'])->name('roles.permissions');
+    Route::resource('/roles', RoleController::class);
+    Route::resource('/permissions', PermissionController::class);
 });
 
 

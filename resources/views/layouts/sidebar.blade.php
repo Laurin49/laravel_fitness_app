@@ -30,14 +30,11 @@
             </svg>
             <span class="mx-3">Dashboard</span>
         </a>
-        {{-- <x-sidebar-link :href="#" :active="request()->routeIs('admin.roles.index')">
+        <x-sidebar-link :href="route('admin.roles.index')" :active="request()->routeIs('admin.roles.index')">
             {{ __('Roles') }}
         </x-sidebar-link>
-        <x-sidebar-link :href="#" :active="request()->routeIs('admin.permissions.index')">
+        <x-sidebar-link :href="route('admin.permissions.index')" :active="request()->routeIs('admin.permissions.index')">
             {{ __('Permissions') }}
         </x-sidebar-link>
-        <x-sidebar-link :href="#" :active="request()->routeIs('admin.users.index')">
-            {{ __('Users') }}
-        </x-sidebar-link> --}}
     </nav>
 </div>
