@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\WorkoutController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +22,7 @@ Route::middleware(['auth', 'role:admin'])
     Route::resource('/users', UserController::class);
 });
 
+Route::resource('/workouts', WorkoutController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
