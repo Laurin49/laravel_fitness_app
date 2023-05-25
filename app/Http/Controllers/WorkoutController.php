@@ -25,6 +25,7 @@ class WorkoutController extends Controller
      */
     public function create()
     {
+        // $this->authorize('create', Workout::class);
         return view('fitness.workouts.create');
     }
 
