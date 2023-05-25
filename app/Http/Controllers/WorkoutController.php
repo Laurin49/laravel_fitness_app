@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Workout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WorkoutController extends Controller
 {
@@ -14,7 +15,7 @@ class WorkoutController extends Controller
      */
     public function index()
     {
-        $workouts = Workout::all();
+        $workouts = Workout::where('user_id', Auth::id())->get();
         return view('fitness.workouts.index', compact('workouts'));
     }
 
@@ -38,10 +39,17 @@ class WorkoutController extends Controller
     public function store(Request $request, Workout $workout)
     {
         $this->authorize('create', Workout::class);
-        $validated = $request->validate(['name' => 'required', 'datum' => 'required']);
-        Workout::create($validated);
+        $request->validate([
+            'name' => 'required', 
+            'datum' => 'required'
+        ]);
+        Workout::create([
+            'name' => $request->name,
+            'datum' => $request->datum,
+            'user_id' => Auth::id()
+        ]);
 
-        return to_route('workouts.index');
+        return to_route('workouts.index')->with('message', 'Workout created successfully.');
     }
 
     /**
@@ -61,9 +69,9 @@ class WorkoutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Workout $workout)
     {
-        //
+        return view('fitness.workouts.edit', compact('workout'));
     }
 
     /**
@@ -73,9 +81,20 @@ class WorkoutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Workout $workout)
     {
-        //
+        $this->authorize('update', $workout);
+
+        $request->validate([
+            'name' => 'required', 
+            'datum' => 'required'
+        ]);
+        $workout->update([
+            'name' => $request->name,
+            'datum' => $request->datum
+        ]);
+
+        return to_route('workouts.index')->with('message', 'Workout updated successfully.');
     }
 
     /**
@@ -84,8 +103,11 @@ class WorkoutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Workout $workout)
     {
-        //
+        $this->authorize('delete', $workout);
+        
+        $workout->delete();
+        return to_route('workouts.index')->with('message', 'Workout deleted successfully.');
     }
 }
