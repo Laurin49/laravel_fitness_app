@@ -1,5 +1,10 @@
 <x-admin-layout>
     <div class="max-w-6xl mx-auto mt-12">
+        <div class="flex justify-end p-2 m-2">
+            <a href="{{ route('admin.users.create') }}" class="px-4 py-2 bg-indigo-400 rounded hover:bg-indigo-600">
+                New User
+            </a>
+        </div>
         <div class="relative overflow-x-auto bg-gray-200 shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
