@@ -30,6 +30,7 @@
             </svg>
             <span class="mx-3">Dashboard</span>
         </a>
+        <hr class="mt-4 mb-4" />
         <x-sidebar-link :href="route('admin.roles.index')" :active="request()->routeIs('admin.roles.index')">
             {{ __('Roles') }}
         </x-sidebar-link>
@@ -38,6 +39,14 @@
         </x-sidebar-link>
         <x-sidebar-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
             {{ __('Users') }}
+        </x-sidebar-link>
+        
+        <hr class="mt-4 mb-4" />
+        <x-sidebar-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+            {{ __('Categories') }}
+        </x-sidebar-link>
+        <x-sidebar-link :href="route('admin.exercises.index')" :active="request()->routeIs('admin.exercises.index')">
+            {{ __('Exercises') }}
         </x-sidebar-link>
     </nav>
 </div>

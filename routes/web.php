@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\WorkoutController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ExerciseController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,6 +22,8 @@ Route::middleware(['auth', 'role:admin'])
     Route::resource('/roles', RoleController::class);
     Route::resource('/permissions', PermissionController::class);
     Route::resource('/users', UserController::class);
+    Route::resource('categories', CategoryController::class);
+    Route::resource('exercises', ExerciseController::class);
 });
 
 Route::resource('/workouts', WorkoutController::class);
