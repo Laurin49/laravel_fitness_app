@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('workouts.index')" :active="request()->routeIs('workouts.index')">
+                        {{ __('Workouts') }}
+                    </x-nav-link>
                     @if (Auth::user()->hasRole('admin'))
                         <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
                             {{ __('Admin') }}
@@ -74,6 +77,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('workouts.index')" :active="request()->routeIs('workouts.index')">
+                {{ __('Workouts') }}
             </x-responsive-nav-link>
         </div>
 
