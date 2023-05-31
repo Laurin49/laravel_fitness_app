@@ -1,9 +1,9 @@
 <x-app-layout>
     <div class="max-w-6xl mx-auto mt-12">
         {{-- @can('create', App\Models\Post::class) --}}
-            <div class="flex p-2 m-2">
+            <div class="flex justify-end p-2 m-2">
                 <a href="{{ route('workouts.index') }}" class="px-4 py-2 bg-indigo-400 rounded hover:bg-indigo-600">
-                --> Back</a>
+                <-- Back</a>
             </div>
         {{-- @endcan --}}
         <div class="max-w-md p-4 mx-auto">
@@ -30,7 +30,18 @@
                     </span>
                     @enderror
                 </div>
-                
+                <div class="mt-4 mb-6">
+                    <label class="block text-sm font-medium text-gray-700" for="category">
+                        <span class=""> Categories: </span>
+                        <select class="block w-full mt-1" name="category_id">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </label>
+                </div>                
                 <button type="submit"
                     class="w-full py-3 mt-10 font-medium text-white uppercase bg-indigo-400 rounded-md hover:bg-indigo-600 focus:outline-none hover:shadow-none">
                     Create

@@ -14,4 +14,8 @@ class Exercise extends Model
     public function category() {
         return $this->belongsTo(Category::class);
     }
+
+    public function workouts() {
+        return $this->belongsToMany(Workout::class)->withPivot('beschreibung');
+    }
 }
