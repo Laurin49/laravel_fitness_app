@@ -26,6 +26,12 @@ Route::middleware(['auth', 'role:admin'])
     Route::resource('exercises', ExerciseController::class);
 });
 
+Route::post('/workouts/{workout}/categories', [WorkoutController::class, 'selectCategories'])->name('workouts.categories');
+Route::post('/workouts/{workout}/exercises', [WorkoutController::class, 'assignExercises'])->name('workouts.exercises');
+Route::post('/workouts/{workout}/attach.exercise', [WorkoutController::class, 'attachExercise'])->name('workouts.attach.exercise');
+Route::post('/workouts/{workout}/detach.exercise', [WorkoutController::class, 'detachExercise'])->name('workouts.detach.exercise');
+Route::get('/workouts/{workout}/update.exercise', [WorkoutController::class, 'updateExercise'])->name('workouts.update.exercise');
+Route::put('/workouts/{workout}/update.beschreibung', [WorkoutController::class, 'updateBeschreibung'])->name('workouts.update.beschreibung');
 Route::resource('/workouts', WorkoutController::class);
 
 Route::get('/dashboard', function () {

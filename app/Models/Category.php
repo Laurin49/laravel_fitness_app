@@ -14,4 +14,8 @@ class Category extends Model
     public function exercises() {
         return $this->hasMany(Exercise::class);
     }
+
+    public function workouts() {
+        return $this->hasMany(Workout::class);
+    }
 }

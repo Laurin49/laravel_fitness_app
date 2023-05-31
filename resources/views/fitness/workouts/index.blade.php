@@ -42,6 +42,9 @@
 
                             <td class="px-6 py-4 text-right">
                                 <div class="flex space-x-2">
+                                    <a href="{{ route('workouts.show', $workout->id) }}"
+                                        class="font-medium text-green-600 dark:text-green-500 hover:underline">Show
+                                    </a>
                                     @can('update', $workout)
                                         <a href="{{ route('workouts.edit', $workout->id) }}"
                                             class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit
