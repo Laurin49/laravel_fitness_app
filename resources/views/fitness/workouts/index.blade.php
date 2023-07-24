@@ -45,6 +45,9 @@
                                     <a href="{{ route('workouts.show', $workout->id) }}"
                                         class="font-medium text-green-600 dark:text-green-500 hover:underline">Show
                                     </a>
+                                    <a href="{{ route('workouts.copy', $workout->id) }}"
+                                        class="font-medium text-gray-600 dark:text-gray-500 hover:underline">Copy
+                                    </a>
                                     @can('update', $workout)
                                         <a href="{{ route('workouts.edit', $workout->id) }}"
                                             class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit

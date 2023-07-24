@@ -50,4 +50,8 @@ class User extends Authenticatable
     public function hasRole($roleName): bool {
         return $this->role()->where('name', $roleName)->exists();
     }
+
+    public function workouts() {
+        return $this->hasMany(Workout::class);
+    }
 }

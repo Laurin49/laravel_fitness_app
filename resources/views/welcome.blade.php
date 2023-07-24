@@ -423,8 +423,16 @@
         </div>
         @endif
         
-        <h1 class="font-serif text-5xl font-bold decoration-gray-400">DIWE Fitness App</h1>
-        
+        <div class="max-w-4xl rounded shadow-md shadow-indigo-600">
+            <div class="p-8">
+                <div>
+                    <h2 class="text-5xl font-bold text-indigo-600">Testdatenbank</h2>
+                    <p class="mt-8 text-3xl text-gray-600">
+                        Fitness App - DIWE.INFO
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

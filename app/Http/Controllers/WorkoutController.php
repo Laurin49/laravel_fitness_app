@@ -184,4 +184,18 @@ class WorkoutController extends Controller
         // dd($available_exercise);
         return view('fitness.workouts.show', compact('workout', 'workout_exercises', 'available_exercises'));
     }
+
+    public function copy_workout(Workout $workout) {
+       
+        $curr_workout = Workout::create([
+            'name' => $workout->name,
+            'datum' => now(),
+            'category_id' => $workout->category_id,
+            'user_id' => $workout->user_id
+        ]);
+        foreach($workout->exercises as $curr_exercise) {
+            $curr_workout->exercises()->attach($curr_exercise->id, ['beschreibung' => $curr_exercise->pivot->beschreibung]);
+        }
+        return to_route('workouts.index')->with('message', 'Workout copy successfully.');
+    }
 }

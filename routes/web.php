@@ -32,6 +32,7 @@ Route::post('/workouts/{workout}/attach.exercise', [WorkoutController::class, 'a
 Route::post('/workouts/{workout}/detach.exercise', [WorkoutController::class, 'detachExercise'])->name('workouts.detach.exercise');
 Route::get('/workouts/{workout}/update.exercise', [WorkoutController::class, 'updateExercise'])->name('workouts.update.exercise');
 Route::put('/workouts/{workout}/update.beschreibung', [WorkoutController::class, 'updateBeschreibung'])->name('workouts.update.beschreibung');
+Route::get('/workouts/{workout}/copy', [WorkoutController::class, 'copy_workout'])->name('workouts.copy');
 Route::resource('/workouts', WorkoutController::class);
 
 Route::get('/dashboard', function () {
